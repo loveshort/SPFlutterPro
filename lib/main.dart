@@ -1,6 +1,41 @@
+/*
+ * @作者: 顾明次
+ * @Date: 2025-09-17 14:32:49
+ * @Email: gu271901088@gmail.com
+ * @描述: 
+ */
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'log_utils/log_utils.dart';
+import 'https/https_engine.dart';
+import 'store_data/shared_preferences_manager.dart';
 
-void main() {
+
+void main() async {
+  // 确保 Flutter 绑定已初始化
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // 初始化日志工具
+  LogUtils.init(
+    enabled: true,
+    minLevel: Level.debug,
+  );
+  
+  // 测试日志功能
+  LogUtils.d('Debug日志测试');
+  LogUtils.i('Info日志测试');
+  LogUtils.w('Warning日志测试');
+  LogUtils.e('Error日志测试');
+  
+  // 初始化网络引擎
+  HttpsEngine.init();
+  
+  // 初始化 SharedPreferences
+  await SharedPreferencesManager.init();
+  
+  // 记录应用启动
+  LogUtils.i('应用启动');
+  
   runApp(const MyApp());
 }
 
@@ -50,6 +85,12 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+    
+    // 记录用户行为
+    LogUtils.userAction('点击计数器按钮', params: {
+      'counterValue': _counter,
+      'timestamp': DateTime.now().toIso8601String(),
     });
   }
 
