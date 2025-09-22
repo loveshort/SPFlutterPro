@@ -10,7 +10,8 @@ import 'log_utils/log_utils.dart';
 import 'https/https_engine.dart';
 import 'store_data/shared_preferences_manager.dart';
 import 'widgets/dashed_line/dashed_line.dart';
-import 'widgets/dashed_line/dashed_line_example.dart';
+import 'widgets/mc_color/color_manager.dart';
+import 'widgets/mc_color/color_example.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化
@@ -34,6 +35,9 @@ void main() async {
   // 初始化 SharedPreferences
   await SharedPreferencesManager.init();
 
+  // 初始化颜色管理器
+  ColorManager.setDarkMode(false); // 默认使用浅色主题
+
   // 记录应用启动
   LogUtils.i('应用启动');
 
@@ -53,6 +57,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        '/color-example': (context) => const ColorExample(),
+      },
     );
   }
 }
@@ -152,6 +159,17 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             // DashedLineExample(),
             const DashedLine(),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/color-example');
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: ColorManager.primary,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text('颜色工具示例'),
+            ),
           ],
         ),
       ),
