@@ -9,33 +9,34 @@ import 'package:logger/logger.dart';
 import 'log_utils/log_utils.dart';
 import 'https/https_engine.dart';
 import 'store_data/shared_preferences_manager.dart';
-
+import 'widgets/dashed_line/dashed_line.dart';
+import 'widgets/dashed_line/dashed_line_example.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // 初始化日志工具
   LogUtils.init(
     enabled: true,
     minLevel: Level.debug,
   );
-  
+
   // 测试日志功能
   LogUtils.d('Debug日志测试');
   LogUtils.i('Info日志测试');
   LogUtils.w('Warning日志测试');
   LogUtils.e('Error日志测试');
-  
+
   // 初始化网络引擎
   HttpsEngine.init();
-  
+
   // 初始化 SharedPreferences
   await SharedPreferencesManager.init();
-  
+
   // 记录应用启动
   LogUtils.i('应用启动');
-  
+
   runApp(const MyApp());
 }
 
@@ -77,6 +78,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    LogUtils.i('MyHomePage initState');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -86,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-    
+
     // 记录用户行为
     LogUtils.userAction('点击计数器按钮', params: {
       'counterValue': _counter,
@@ -138,6 +150,8 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            // DashedLineExample(),
+            const DashedLine(),
           ],
         ),
       ),
