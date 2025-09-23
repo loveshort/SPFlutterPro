@@ -6,7 +6,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:common_flutter_network/common_flutter_network.dart';
-import 'widgets/dashed_line/dashed_line.dart';
+import 'package:common_widgets_utils/common_widgets_utils.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化

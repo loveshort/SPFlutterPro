@@ -38,7 +38,8 @@ dependencies:
     git:
       url: https://github.com/loveshort/common_flutter_network.git
       ref: main
- 
+  common_widgets_utils:
+    path: ./package/common_widgets_utils
 
 dev_dependencies:
   flutter_test:
