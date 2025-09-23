@@ -9,6 +9,7 @@ import 'package:common_flutter_network/common_flutter_network.dart';
 import 'package:common_widgets_utils/common_widgets_utils.dart';
 import 'package:common_widgets_utils/src/bottom_sheet/bottom_sheet_example.dart';
 import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dart';
+import 'package:sp_flutter_shopping/module/tabbar/bottom_tab_example.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化
@@ -195,6 +196,38 @@ class _MyHomePageState extends State<MyHomePage> {
                 foregroundColor: Colors.white,
               ),
               child: const Text('中间弹窗示例'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BottomTabExample(),
+                  ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text('底部Tab示例'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AdvancedBottomTabExample(),
+                  ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.indigo,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text('高级底部Tab示例'),
             ),
           ],
         ),
