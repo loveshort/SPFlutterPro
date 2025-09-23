@@ -5,13 +5,8 @@
  * @描述: 
  */
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
-import 'log_utils/log_utils.dart';
-import 'https/https_engine.dart';
-import 'store_data/shared_preferences_manager.dart';
+import 'package:common_flutter_network/common_flutter_network.dart';
 import 'widgets/dashed_line/dashed_line.dart';
-import 'widgets/mc_color/color_manager.dart';
-import 'widgets/mc_color/color_example.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化
@@ -20,7 +15,7 @@ void main() async {
   // 初始化日志工具
   LogUtils.init(
     enabled: true,
-    minLevel: Level.debug,
+    minLevel: LogLevel.debug,
   );
 
   // 测试日志功能
@@ -57,9 +52,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      routes: {
-        '/color-example': (context) => const ColorExample(),
-      },
     );
   }
 }
