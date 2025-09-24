@@ -40,7 +40,8 @@ dependencies:
       ref: main
   common_widgets_utils:
     path: ./package/common_widgets_utils
-  get: ^5.0.0-release-candidate-9.3.2
+  get: ^4.7.2 # 状态管理
+  riverpod: ^2.6.1 # 状态管理
 
 dev_dependencies:
   flutter_test:

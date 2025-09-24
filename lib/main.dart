@@ -1,4 +1,12 @@
 /*
+ * @Author: mingci gu271901088@gmail.com
+ * @Date: 2025-09-17 14:32:49
+ * @LastEditors: mingci gu271901088@gmail.com
+ * @LastEditTime: 2025-09-24 10:29:50
+ * @FilePath: /SPFlutterPro/lib/main.dart
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+/*
  * @作者: 顾明次
  * @Date: 2025-09-17 14:32:49
  * @Email: gu271901088@gmail.com
@@ -10,6 +18,7 @@ import 'package:common_widgets_utils/common_widgets_utils.dart';
 import 'package:common_widgets_utils/src/bottom_sheet/bottom_sheet_example.dart';
 import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dart';
 import 'package:sp_flutter_shopping/module/tabbar/bottom_tab_example.dart';
+import 'package:sp_flutter_shopping/app/app.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化
@@ -39,7 +48,7 @@ void main() async {
   // 记录应用启动
   LogUtils.i('应用启动');
 
-  runApp(const MyApp());
+  runApp(App());
 }
 
 class MyApp extends StatelessWidget {
