@@ -278,9 +278,11 @@ class GoRouterDebug {
         ElevatedButton(
           onPressed: () async {
             await GoRouterDebug.testAllRoutes();
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('路由测试完成')),
-            );
+            if (context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('路由测试完成')),
+              );
+            }
           },
           child: const Text('测试所有路由'),
         ),

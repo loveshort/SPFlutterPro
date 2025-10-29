@@ -282,8 +282,9 @@ class GoRouterRoutes {
         return centerDialogExampleName;
       default:
         if (path.startsWith('/todos/detail/')) return todoDetailName;
-        if (path.startsWith('/products/detail/'))
+        if (path.startsWith('/products/detail/')) {
           return riverpodProductDetailName;
+        }
         if (path.startsWith('/main/')) {
           final tabName = path.split('/').last;
           return 'tab-$tabName';
