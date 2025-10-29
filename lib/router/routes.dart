@@ -2,7 +2,7 @@
  * @Author: mingci gu271901088@gmail.com
  * @Date: 2025-01-27
  * @LastEditors: mingci gu271901088@gmail.com
- * @LastEditTime: 2025-01-27
+ * @LastEditTime: 2025-10-29 10:33:04
  * @FilePath: /SPFlutterPro/lib/router/routes.dart
  * @Description: 路由常量定义
  */
@@ -41,6 +41,18 @@ class Routes {
   static const String bottomSheetExample = '/bottomSheetExample';
   static const String centerDialogExample = '/centerDialogExample';
 
+  // GetX示例路由
+  static const String getxExample = '/getxExample';
+  static const String todoList = '/todoList';
+  static const String todoDetail = '/todoDetail';
+  static const String todoForm = '/todoForm';
+
+  // Riverpod示例路由
+  static const String riverpodExample = '/riverpodExample';
+  static const String riverpodProductList = '/riverpodProductList';
+  static const String riverpodProductDetail = '/riverpodProductDetail';
+  static const String riverpodCart = '/riverpodCart';
+
   // 获取所有路由列表
   static List<String> get allRoutes => [
         home,
@@ -64,5 +76,13 @@ class Routes {
         colorExample,
         bottomSheetExample,
         centerDialogExample,
+        getxExample,
+        todoList,
+        todoDetail,
+        todoForm,
+        riverpodExample,
+        riverpodProductList,
+        riverpodProductDetail,
+        riverpodCart,
       ];
 }

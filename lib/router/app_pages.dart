@@ -21,6 +21,20 @@ import '../module/message/message_page.dart';
 import '../module/my/profile_page.dart';
 import '../module/tabbar/bottom_tab_example.dart';
 
+// 导入GetX示例页面
+import '../getX/pages/getx_example_page.dart';
+import '../getX/pages/todo_list_page.dart';
+import '../getX/pages/todo_detail_page.dart';
+import '../getX/pages/todo_form_page.dart';
+import '../getX/models/todo_model.dart';
+
+// 导入Riverpod示例页面
+import '../Riverpod/pages/riverpod_example_page.dart';
+import '../Riverpod/pages/product_list_page.dart';
+import '../Riverpod/pages/product_detail_page.dart';
+import '../Riverpod/pages/cart_page.dart';
+import '../Riverpod/models/product_model.dart';
+
 // 导入路由常量
 import 'routes.dart';
 
@@ -98,6 +112,74 @@ class AppPages {
         GetPage(
           name: Routes.colorExample,
           page: () => _buildColorExamplePage(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+
+        // GetX示例页面
+        GetPage(
+          name: Routes.getxExample,
+          page: () => const GetXExamplePage(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+
+        GetPage(
+          name: Routes.todoList,
+          page: () => const TodoListPage(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+
+        GetPage(
+          name: Routes.todoDetail,
+          page: () {
+            final args = Get.arguments as Map<String, dynamic>;
+            return TodoDetailPage(todoId: args['todoId']);
+          },
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+
+        GetPage(
+          name: Routes.todoForm,
+          page: () {
+            final args = Get.arguments as Map<String, dynamic>?;
+            final todo = args?['todo'] as TodoModel?;
+            return TodoFormPage(todo: todo);
+          },
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+
+        // Riverpod示例页面
+        GetPage(
+          name: Routes.riverpodExample,
+          page: () => const RiverpodExamplePage(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+
+        GetPage(
+          name: Routes.riverpodProductList,
+          page: () => const ProductListPage(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+
+        GetPage(
+          name: Routes.riverpodProductDetail,
+          page: () {
+            final args = Get.arguments as Map<String, dynamic>;
+            return ProductDetailPage(productId: args['productId']);
+          },
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+
+        GetPage(
+          name: Routes.riverpodCart,
+          page: () => const RiverpodCartPage(),
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 300),
         ),
