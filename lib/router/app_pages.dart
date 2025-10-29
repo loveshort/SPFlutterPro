@@ -32,8 +32,7 @@ import '../getX/models/todo_model.dart';
 import '../Riverpod/pages/riverpod_example_page.dart';
 import '../Riverpod/pages/product_list_page.dart';
 import '../Riverpod/pages/product_detail_page.dart';
-import '../Riverpod/pages/cart_page.dart';
-import '../Riverpod/models/product_model.dart';
+import '../Riverpod/pages/river_pod_cart_page.dart';
 
 // 导入路由常量
 import 'routes.dart';

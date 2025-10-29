@@ -2,7 +2,7 @@
  * @Author: mingci gu271901088@gmail.com
  * @Date: 2025-09-17 14:32:49
  * @LastEditors: mingci gu271901088@gmail.com
- * @LastEditTime: 2025-09-24 10:29:50
+ * @LastEditTime: 2025-10-29 11:02:34
  * @FilePath: /SPFlutterPro/lib/main.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -13,12 +13,13 @@
  * @描述: 
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:common_flutter_network/common_flutter_network.dart';
 import 'package:common_widgets_utils/common_widgets_utils.dart';
 import 'package:common_widgets_utils/src/bottom_sheet/bottom_sheet_example.dart';
 import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dart';
 import 'package:sp_flutter_shopping/module/tabbar/bottom_tab_example.dart';
-import 'package:sp_flutter_shopping/app/app.dart';
+import 'router/go_router/go_router.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化
@@ -45,25 +46,35 @@ void main() async {
   // 初始化颜色管理器
   ColorManager.setDarkMode(false); // 默认使用浅色主题
 
+  // 初始化GoRouter配置
+  GoRouterConfig.instance.initialize();
+
+  // 启用调试模式（仅在开发环境）
+  GoRouterDebug.enableDebug();
+
   // 记录应用启动
   LogUtils.i('应用启动');
 
-  runApp(App());
+  runApp(
+    ProviderScope(
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'SP Flutter Shopping',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routerConfig: GoRouterConfig.instance.router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
