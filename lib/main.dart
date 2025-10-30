@@ -1,12 +1,4 @@
 /*
- * @Author: mingci gu271901088@gmail.com
- * @Date: 2025-09-17 14:32:49
- * @LastEditors: mingci gu271901088@gmail.com
- * @LastEditTime: 2025-10-29 11:02:34
- * @FilePath: /SPFlutterPro/lib/main.dart
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-/*
  * @作者: 顾明次
  * @Date: 2025-09-17 14:32:49
  * @Email: gu271901088@gmail.com
@@ -19,6 +11,7 @@ import 'package:common_widgets_utils/common_widgets_utils.dart';
 import 'package:common_widgets_utils/src/bottom_sheet/bottom_sheet_example.dart';
 import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dart';
 import 'package:sp_flutter_shopping/module/tabbar/bottom_tab_example.dart';
+import 'package:sp_flutter_shopping/tab/tab_example.dart';
 import 'router/go_router/go_router.dart';
 
 void main() async {
@@ -113,11 +106,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
 
@@ -130,155 +118,279 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        centerTitle: true,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: ListView(
+        padding: const EdgeInsets.all(16.0),
+        children: [
+          // 计数器演示区域
+          _buildCounterSection(context),
+          const SizedBox(height: 24),
+
+          // UI组件示例
+          _buildSectionTitle('🎨 UI组件示例'),
+          _buildExampleCard(
+            context,
+            title: '颜色工具示例',
+            description: '演示颜色管理器的使用',
+            color: ColorManager.primary,
+            icon: Icons.palette,
+            onTap: () => Navigator.pushNamed(context, '/color-example'),
+          ),
+          _buildExampleCard(
+            context,
+            title: '底部弹窗示例',
+            description: '演示各种底部弹窗样式',
+            color: Colors.purple,
+            icon: Icons.view_agenda,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const BottomSheetExample()),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          _buildExampleCard(
+            context,
+            title: '中间弹窗示例',
+            description: '演示各种中间弹窗样式',
+            color: Colors.teal,
+            icon: Icons.flip_to_front,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const CenterDialogExample()),
             ),
-            // DashedLineExample(),
-            const DashedLine(),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/color-example');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ColorManager.primary,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('颜色工具示例'),
+          ),
+          const SizedBox(height: 16),
+
+          // Tab导航示例（新版封装）
+          _buildSectionTitle('📱 Tab导航示例（新版封装）'),
+          _buildExampleCard(
+            context,
+            title: '基础Tab示例',
+            description: '简单的三Tab导航',
+            color: Colors.cyan,
+            icon: Icons.tab,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const BasicTabExample()),
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const BottomSheetExample(),
-                  ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('底部弹窗示例'),
+          ),
+          _buildExampleCard(
+            context,
+            title: '高级Tab示例',
+            description: '带徽章和自定义样式的Tab',
+            color: Colors.amber,
+            icon: Icons.tab_unselected,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AdvancedTabExample()),
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CenterDialogExample(),
-                  ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('中间弹窗示例'),
+          ),
+          _buildExampleCard(
+            context,
+            title: '自定义控制器Tab示例',
+            description: '演示编程式Tab切换',
+            color: Colors.pink,
+            icon: Icons.app_settings_alt,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const CustomControllerTabExample()),
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const BottomTabExample(),
-                  ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('底部Tab示例'),
+          ),
+          const SizedBox(height: 16),
+
+          // Tab导航示例（旧版）
+          _buildSectionTitle('📑 Tab导航示例（旧版）'),
+          _buildExampleCard(
+            context,
+            title: '底部Tab示例',
+            description: '使用common_widgets_utils的Tab',
+            color: Colors.deepPurple,
+            icon: Icons.dashboard,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const BottomTabExample()),
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AdvancedBottomTabExample(),
-                  ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.indigo,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('高级底部Tab示例'),
+          ),
+          _buildExampleCard(
+            context,
+            title: '高级底部Tab示例',
+            description: '高级自定义底部Tab',
+            color: Colors.indigo,
+            icon: Icons.dashboard_customize,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AdvancedBottomTabExample()),
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/getxExample');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('GetX 完美示例'),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/riverpodExample');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('Riverpod 完美示例'),
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 16),
+
+          // 状态管理示例
+          _buildSectionTitle('⚡ 状态管理示例'),
+          _buildExampleCard(
+            context,
+            title: 'GetX 完美示例',
+            description: '演示GetX状态管理',
+            color: Colors.red,
+            icon: Icons.g_mobiledata,
+            onTap: () => Navigator.pushNamed(context, '/getxExample'),
+          ),
+          _buildExampleCard(
+            context,
+            title: 'Riverpod 完美示例',
+            description: '演示Riverpod状态管理',
+            color: Colors.teal,
+            icon: Icons.anchor,
+            onTap: () => Navigator.pushNamed(context, '/riverpodExample'),
+          ),
+          const SizedBox(height: 24),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: '增加计数',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+    );
+  }
+
+  /// 构建计数器区域
+  Widget _buildCounterSection(BuildContext context) {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          children: [
+            const Icon(
+              Icons.touch_app,
+              size: 48,
+              color: Colors.deepPurple,
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              '你已经点击了这么多次：',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    color: Colors.deepPurple,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 16),
+            const DashedLine(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// 构建分类标题
+  Widget _buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          Container(
+            width: 4,
+            height: 24,
+            decoration: BoxDecoration(
+              color: Colors.deepPurple,
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// 构建示例卡片
+  Widget _buildExampleCard(
+    BuildContext context, {
+    required String title,
+    required String description,
+    required Color color,
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return Card(
+      elevation: 2,
+      margin: const EdgeInsets.only(bottom: 12),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            children: [
+              Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(
+                  icon,
+                  color: color,
+                  size: 28,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      description,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.grey.shade400,
+                size: 16,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

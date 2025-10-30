@@ -2,7 +2,7 @@
  * @Author: mingci gu271901088@gmail.com
  * @Date: 2025-01-27
  * @LastEditors: mingci gu271901088@gmail.com
- * @LastEditTime: 2025-09-24 10:28:53
+ * @LastEditTime: 2025-10-30 14:11:05
  * @FilePath: /SPFlutterPro/lib/app/app.dart
  * @Description: 应用主入口
  */
@@ -13,9 +13,6 @@ import 'package:get/get.dart';
 // 导入路由配置
 import '../router/app_pages.dart';
 import '../router/routes.dart';
-
-// 导入页面
-import '../module/home/home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
