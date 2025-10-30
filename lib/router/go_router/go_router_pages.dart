@@ -2,12 +2,13 @@
  * @Author: mingci gu271901088@gmail.com
  * @Date: 2025-01-27
  * @LastEditors: mingci gu271901088@gmail.com
- * @LastEditTime: 2025-10-30
+ * @LastEditTime: 2025-10-30 14:28:52
  * @FilePath: /SPFlutterPro/lib/router/go_router_pages.dart
  * @Description: GoRouter 页面组件 - 基础页面组件
  */
 
 import 'package:flutter/material.dart';
+import 'package:common_flutter_network/common_flutter_network.dart';
 import 'package:common_widgets_utils/common_widgets_utils.dart';
 import 'package:common_widgets_utils/src/bottom_sheet/bottom_sheet_example.dart';
 import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dart';
@@ -66,7 +67,14 @@ class _HomePageState extends State<HomePage> {
             description: '演示颜色管理器的使用',
             color: ColorManager.primary,
             icon: Icons.palette,
-            onTap: () => context.goColorExample(),
+            onTap: () {
+              // 跳转到颜色示例页面
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ColorExamplePage()),
+              );
+            },
           ),
           _buildExampleCard(
             context,
@@ -76,7 +84,8 @@ class _HomePageState extends State<HomePage> {
             icon: Icons.view_agenda,
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const BottomSheetExample()),
+              MaterialPageRoute(
+                  builder: (context) => const BottomSheetExample()),
             ),
           ),
           _buildExampleCard(
@@ -87,7 +96,8 @@ class _HomePageState extends State<HomePage> {
             icon: Icons.flip_to_front,
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const CenterDialogExample()),
+              MaterialPageRoute(
+                  builder: (context) => const CenterDialogExample()),
             ),
           ),
           const SizedBox(height: 16),
@@ -113,7 +123,8 @@ class _HomePageState extends State<HomePage> {
             icon: Icons.tab_unselected,
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const AdvancedTabExample()),
+              MaterialPageRoute(
+                  builder: (context) => const AdvancedTabExample()),
             ),
           ),
           _buildExampleCard(
@@ -124,7 +135,8 @@ class _HomePageState extends State<HomePage> {
             icon: Icons.app_settings_alt,
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const CustomControllerTabExample()),
+              MaterialPageRoute(
+                  builder: (context) => const CustomControllerTabExample()),
             ),
           ),
           const SizedBox(height: 16),
@@ -150,7 +162,8 @@ class _HomePageState extends State<HomePage> {
             icon: Icons.dashboard_customize,
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const AdvancedBottomTabExample()),
+              MaterialPageRoute(
+                  builder: (context) => const AdvancedBottomTabExample()),
             ),
           ),
           const SizedBox(height: 16),
