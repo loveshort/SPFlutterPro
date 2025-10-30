@@ -16,6 +16,7 @@ import 'router/go_router/go_router.dart';
 import 'common/app_info_service.dart';
 import 'common/connectivity_service.dart';
 import 'common/screen_util.dart';
+import 'package:oktoast/oktoast.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化
@@ -57,8 +58,10 @@ void main() async {
 
   runApp(
     ScreenUtilInitWrapper(
-      child: ProviderScope(
-        child: const MyApp(),
+      child: OKToast(
+        child: ProviderScope(
+          child: const MyApp(),
+        ),
       ),
     ),
   );

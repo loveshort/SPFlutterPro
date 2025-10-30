@@ -162,6 +162,30 @@ package/
     ```
 
 - `EnvConfig`（环境配置）→ 封装：`lib/common/env_config.dart`
+### 第三方封装（新增）
+
+- `oktoast`（全局 Toast）→ 封装：`lib/common/toast_util.dart`
+  - 集成：在 `main.dart` 用 `OKToast` 包裹 `MyApp`
+  - 用法：
+    ```dart
+    ToastUtil.success('操作成功');
+    ToastUtil.error('出错了');
+    ToastUtil.show('普通提示');
+    ```
+
+- `flutter_svg`（SVG显示）→ 封装：`lib/common/svg_util.dart`
+  - 用法：
+    ```dart
+    SvgUtil.asset('assets/icons/logo.svg', width: 24);
+    SvgUtil.network('https://.../image.svg', width: 120);
+    ```
+
+- `decimal`（高精度计算）→ 封装：`lib/common/decimal_util.dart`
+  - 用法：
+    ```dart
+    DecimalUtil.add(0.1, 0.2, scale: 3); // 0.300
+    DecimalUtil.mul(2.5, 1.2, scale: 3); // 3.000
+    ```
   - 用法：
     ```dart
     EnvConfig.apply(baseApiUrl: 'https://api.dev.com', name: 'dev');

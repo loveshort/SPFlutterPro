@@ -53,7 +53,11 @@ dependencies:
   cached_network_image: ^3.4.1 # 缓存网络图片
   flutter_screenutil: ^5.9.3 # 屏幕适配
   shared_preferences: ^2.3.2 # 本地存储
-  
+  flutter_svg: ^2.0.17 # SVG图片
+  oktoast: ^3.1.0 # 提示框
+  decimal: ^3.2.4
+ 
+
 
 dev_dependencies:
   flutter_test:

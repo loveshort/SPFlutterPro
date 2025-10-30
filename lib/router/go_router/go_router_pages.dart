@@ -21,6 +21,9 @@ import '../../common/permission_service.dart';
 import '../../common/intl_util.dart';
 import '../../common/image_cache_util.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../../common/svg_util.dart';
+import '../../common/toast_util.dart';
+import '../../common/decimal_util.dart';
 
 /// 首页组件
 class HomePage extends StatefulWidget {
@@ -199,6 +202,60 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
+                ),
+              );
+            },
+          ),
+
+          _buildExampleCard(
+            context,
+            title: 'SVG 展示',
+            description: 'flutter_svg 封装示例',
+            color: Colors.black87,
+            icon: Icons.logo_dev,
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: const Text('SVG 示例'),
+                  content: SizedBox(
+                    width: 160,
+                    height: 160,
+                    child: SvgUtil.network(
+                      'https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/android.svg',
+                      placeholder: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+
+          _buildExampleCard(
+            context,
+            title: 'Toast 提示',
+            description: 'oktoast 封装示例',
+            color: Colors.deepOrange,
+            icon: Icons.notification_important,
+            onTap: () {
+              ToastUtil.success('操作成功');
+            },
+          ),
+
+          _buildExampleCard(
+            context,
+            title: '高精度计算',
+            description: 'decimal 加减乘除',
+            color: Colors.blueAccent,
+            icon: Icons.calculate,
+            onTap: () {
+              final add = DecimalUtil.add(0.1, 0.2, scale: 3); // 0.300
+              final mul = DecimalUtil.mul(2.5, 1.2, scale: 3); // 3.000
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: const Text('高精度结果'),
+                  content: Text('0.1 + 0.2 = $add\n2.5 × 1.2 = $mul'),
                 ),
               );
             },
