@@ -136,6 +136,37 @@ package/
     IntlUtil.relativeTime(DateTime.now().subtract(Duration(minutes: 5))); // 5分钟前
     ```
 
+- `shared_preferences`（本地存储）→ 封装：`lib/common/local_storage.dart`
+  - 用法：
+    ```dart
+    await LocalStorage.setString('token', 'abc');
+    final token = await LocalStorage.getString('token');
+    ```
+
+- `Clipboard/SnackBar/Dialog`（系统交互）→ 封装：
+  - `lib/common/clipboard_util.dart`
+  - `lib/common/snackbar_util.dart`
+  - `lib/common/dialog_util.dart`
+  - 用法：
+    ```dart
+    await ClipboardUtil.copy('内容');
+    SnackbarUtil.success(context, '已复制');
+    final ok = await DialogUtil.confirm(context, '确定删除？');
+    ```
+
+- `Debounce/Throttle`（节流防抖）→ 封装：`lib/common/debounce_throttle.dart`
+  - 用法：
+    ```dart
+    final debouncer = Debouncer(Duration(milliseconds: 300));
+    debouncer(() { /* 搜索 */ });
+    ```
+
+- `EnvConfig`（环境配置）→ 封装：`lib/common/env_config.dart`
+  - 用法：
+    ```dart
+    EnvConfig.apply(baseApiUrl: 'https://api.dev.com', name: 'dev');
+    ```
+
   - 封装入口：`GoRouterConfig.instance.initialize()`
   - 常量：`GoRouterRoutes` 提供路径/名称常量
   - 守卫：`GoRouterGuards.*`
