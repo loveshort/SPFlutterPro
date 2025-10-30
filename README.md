@@ -1,56 +1,5 @@
 # sp_flutter_shopping
 
-## 蒲公英打包与上传（Fastlane 整合）
-
-已添加以下脚本与配置：
-
-- `ios/fastlane/Fastfile`：
-  - `lane dev`：生成 Debug/Development 版 ipa 并上传到蒲公英
-  - `lane release_pgyer`：生成 Release AdHoc 版 ipa 并上传到蒲公英
-- `android/fastlane/Fastfile`：
-  - `lane debug_pgyer`：生成 Debug APK 并上传到蒲公英
-  - `lane release_pgyer`：生成 Release APK 并上传到蒲公英
-- 根目录脚本：
-  - `pgyer_build.sh`：并行构建 iOS dev + Android debug，并上传蒲公英
-  - `pgyer_build_release.sh`：并行构建 iOS release + Android release，并上传蒲公英
-
-环境变量（请在 shell 或 CI 中设置）：
-
-```bash
-export PGYER_API_KEY="<你的蒲公英_api_key>"
-# 可选：设置安装密码（若需要）
-export PGYER_INSTALL_PASSWORD=""
-# 可选：更新描述
-export PGYER_CHANGELOG="Auto upload via Fastlane"
-```
-
-使用方式：
-
-```bash
-# 调试包（iOS dev + Android debug）
-bash ./pgyer_build.sh
-
-# 发布包（iOS release + Android release）
-bash ./pgyer_build_release.sh
-```
-
-注意事项：
-- iOS 需要正确的签名证书与 provisioning（dev 使用 development，release 使用 ad-hoc）。
-- 如果没有安装 Bundler，可直接使用 `fastlane <lane>`；脚本已自动判断。
-- Android lanes 默认输出 APK 并上传，如需改为 AAB 可调整 gradle 任务与上传文件。
-
-## 项目简介
-
-本项目是一个集成多种架构与路由方案的 Flutter 电商示例工程，包含：
-
-- 新版 Tab 封装（自研组件，支持徽章/动画/KeepAlive/自定义样式）
-- 老版 Tab（基于 `common_widgets_utils` 的示例）
-- 路由：GoRouter 完整封装（守卫、过渡、调试、类型安全常量）
-- 状态管理：GetX 与 Riverpod 两套完整示例（列表、详情、表单、购物车）
-- 通用 UI 组件：颜色管理、虚线、弹窗、居中对话框等
-- 网络层：`common_flutter_network` 统一初始化与日志
-- 打包分发：fastlane + Pgyer 一键上传（iOS/Android 并行）
-
 ## 功能清单与入口
 
 - 路由系统（GoRouter）
@@ -180,6 +129,56 @@ export PGYER_API_KEY="<你的蒲公英_api_key>"
 export PGYER_INSTALL_PASSWORD=""  # 可选
 export PGYER_CHANGELOG="Auto upload via Fastlane"  # 可选
 ```
+## 蒲公英打包与上传（Fastlane 整合）
+
+已添加以下脚本与配置：
+
+- `ios/fastlane/Fastfile`：
+  - `lane dev`：生成 Debug/Development 版 ipa 并上传到蒲公英
+  - `lane release_pgyer`：生成 Release AdHoc 版 ipa 并上传到蒲公英
+- `android/fastlane/Fastfile`：
+  - `lane debug_pgyer`：生成 Debug APK 并上传到蒲公英
+  - `lane release_pgyer`：生成 Release APK 并上传到蒲公英
+- 根目录脚本：
+  - `pgyer_build.sh`：并行构建 iOS dev + Android debug，并上传蒲公英
+  - `pgyer_build_release.sh`：并行构建 iOS release + Android release，并上传蒲公英
+
+环境变量（请在 shell 或 CI 中设置）：
+
+```bash
+export PGYER_API_KEY="<你的蒲公英_api_key>"
+# 可选：设置安装密码（若需要）
+export PGYER_INSTALL_PASSWORD=""
+# 可选：更新描述
+export PGYER_CHANGELOG="Auto upload via Fastlane"
+```
+
+使用方式：
+
+```bash
+# 调试包（iOS dev + Android debug）
+bash ./pgyer_build.sh
+
+# 发布包（iOS release + Android release）
+bash ./pgyer_build_release.sh
+```
+
+注意事项：
+- iOS 需要正确的签名证书与 provisioning（dev 使用 development，release 使用 ad-hoc）。
+- 如果没有安装 Bundler，可直接使用 `fastlane <lane>`；脚本已自动判断。
+- Android lanes 默认输出 APK 并上传，如需改为 AAB 可调整 gradle 任务与上传文件。
+
+## 项目简介
+
+本项目是一个集成多种架构与路由方案的 Flutter 电商示例工程，包含：
+
+- 新版 Tab 封装（自研组件，支持徽章/动画/KeepAlive/自定义样式）
+- 老版 Tab（基于 `common_widgets_utils` 的示例）
+- 路由：GoRouter 完整封装（守卫、过渡、调试、类型安全常量）
+- 状态管理：GetX 与 Riverpod 两套完整示例（列表、详情、表单、购物车）
+- 通用 UI 组件：颜色管理、虚线、弹窗、居中对话框等
+- 网络层：`common_flutter_network` 统一初始化与日志
+- 打包分发：fastlane + Pgyer 一键上传（iOS/Android 并行）
 
 ## 开发规范与说明
 
@@ -200,3 +199,5 @@ export PGYER_CHANGELOG="Auto upload via Fastlane"  # 可选
 
 3. Android 上传失败：
    - 确认 `PGYER_API_KEY` 是否正确，且 APK 路径存在；若改为 AAB 需同步调整上传文件参数。
+
+
