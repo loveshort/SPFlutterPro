@@ -2,7 +2,7 @@
  * @Author: mingci gu271901088@gmail.com
  * @Date: 2025-01-27
  * @LastEditors: mingci gu271901088@gmail.com
- * @LastEditTime: 2025-10-30 14:28:52
+ * @LastEditTime: 2025-10-30 15:04:44
  * @FilePath: /SPFlutterPro/lib/router/go_router_pages.dart
  * @Description: GoRouter 页面组件 - 基础页面组件
  */
@@ -15,6 +15,12 @@ import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dar
 import 'go_router_utils.dart';
 import '../../module/tabbar/bottom_tab_example.dart';
 import '../../tab/tab_example.dart';
+import '../../common/device_info_service.dart';
+import '../../common/launcher_util.dart';
+import '../../common/permission_service.dart';
+import '../../common/intl_util.dart';
+import '../../common/image_cache_util.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 /// 首页组件
 class HomePage extends StatefulWidget {
@@ -101,6 +107,102 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(height: 16),
+
+          // 常用工具示例
+          _buildSectionTitle('🧰 常用工具示例'),
+          _buildExampleCard(
+            context,
+            title: '设备信息',
+            description: '读取设备品牌/型号/系统版本等',
+            color: Colors.brown,
+            icon: Icons.devices_other,
+            onTap: () async {
+              final data = await DeviceInfoService.getDeviceData();
+              if (!mounted) return;
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: const Text('设备信息'),
+                  content: SingleChildScrollView(child: Text(data.toString())),
+                ),
+              );
+            },
+          ),
+          _buildExampleCard(
+            context,
+            title: '打开官方网站',
+            description: '通过 url_launcher 打开外部链接',
+            color: Colors.blueGrey,
+            icon: Icons.open_in_browser,
+            onTap: () async {
+              final ok = await LauncherUtil.openUrl('https://flutter.dev');
+              if (!ok && mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('无法打开链接')),
+                );
+              }
+            },
+          ),
+          _buildExampleCard(
+            context,
+            title: '申请相机权限',
+            description: 'permission_handler 示例',
+            color: Colors.orange,
+            icon: Icons.photo_camera,
+            onTap: () async {
+              final granted = await PermissionService.ensure(Permission.camera);
+              if (!mounted) return;
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(granted ? '已授权' : '未授权')),
+              );
+            },
+          ),
+          _buildExampleCard(
+            context,
+            title: '格式化示例',
+            description: 'Intl：时间/货币/相对时间',
+            color: Colors.green,
+            icon: Icons.access_time,
+            onTap: () async {
+              final ts = IntlUtil.formatDate(DateTime.now());
+              final money = IntlUtil.formatCurrency(88.8);
+              final rel = IntlUtil.relativeTime(
+                  DateTime.now().subtract(const Duration(minutes: 3)));
+              if (!mounted) return;
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: const Text('格式化示例'),
+                  content: Text('时间: $ts\n金额: $money\n相对: $rel'),
+                ),
+              );
+            },
+          ),
+          _buildExampleCard(
+            context,
+            title: '图片缓存展示',
+            description: 'cached_network_image 简易封装',
+            color: Colors.purpleAccent,
+            icon: Icons.image,
+            onTap: () async {
+              if (!mounted) return;
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: const Text('图片缓存'),
+                  content: SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: ImageCacheUtil.network(
+                      'https://picsum.photos/300',
+                      fit: BoxFit.cover,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
 
           // Tab导航示例（新版封装）
           _buildSectionTitle('📱 Tab导航示例（新版封装）'),

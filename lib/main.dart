@@ -13,6 +13,9 @@ import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dar
 import 'package:sp_flutter_shopping/module/tabbar/bottom_tab_example.dart';
 import 'package:sp_flutter_shopping/tab/tab_example.dart';
 import 'router/go_router/go_router.dart';
+import 'common/app_info_service.dart';
+import 'common/connectivity_service.dart';
+import 'common/screen_util.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化
@@ -48,9 +51,15 @@ void main() async {
   // 记录应用启动
   LogUtils.i('应用启动');
 
+  // 初始化通用服务
+  await AppInfoService.init();
+  await ConnectivityService.init();
+
   runApp(
-    ProviderScope(
-      child: const MyApp(),
+    ScreenUtilInitWrapper(
+      child: ProviderScope(
+        child: const MyApp(),
+      ),
     ),
   );
 }

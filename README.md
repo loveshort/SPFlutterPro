@@ -72,6 +72,70 @@ package/
   - 用途：统一网络引擎初始化、日志打点等（示例在 `main.dart`）
 
 - `go_router`（官方路由包）
+### 常用库清单与封装用法
+
+- `intl`（国际化/格式化）
+  - 用法：
+    ```dart
+    import 'package:intl/intl.dart';
+    final str = DateFormat('yyyy-MM-dd HH:mm').format(DateTime.now());
+    ```
+
+- `url_launcher`（外部链接/邮件）→ 封装：`lib/common/launcher_util.dart`
+  - 用法：
+    ```dart
+    final ok = await LauncherUtil.openUrl('https://example.com');
+    ```
+
+- `package_info_plus`（应用信息）→ 封装：`lib/common/app_info_service.dart`
+  - 用法：
+    ```dart
+    await AppInfoService.init();
+    print(AppInfoService.version);
+    ```
+
+- `connectivity_plus`（网络连通性）→ 封装：`lib/common/connectivity_service.dart`
+  - 用法：
+    ```dart
+    await ConnectivityService.init();
+    final online = await ConnectivityService.isOnline();
+    ConnectivityService.onlineStream.listen((isOnline) { /* ... */ });
+    ```
+
+- `permission_handler`（权限）→ 封装：`lib/common/permission_service.dart`
+  - 用法：
+    ```dart
+    final granted = await PermissionService.ensure(Permission.camera);
+    ```
+
+- `cached_network_image`（图片缓存）→ 封装：`lib/common/image_cache_util.dart`
+  - 用法：
+    ```dart
+    ImageCacheUtil.network('https://...', width: 120, height: 120);
+    ```
+
+- `flutter_screenutil`（屏幕适配）→ 封装：`lib/common/screen_util.dart`
+  - 用法：
+    ```dart
+    // 在 MyApp 外层或 MaterialApp 外层包一层
+    ScreenUtilInitWrapper(child: MyApp());
+    ```
+
+- `device_info_plus`（设备信息）→ 封装：`lib/common/device_info_service.dart`
+  - 用法：
+    ```dart
+    final data = await DeviceInfoService.getDeviceData();
+    print(data['model']);
+    ```
+
+- `intl`（时间/货币/数值格式化）→ 封装：`lib/common/intl_util.dart`
+  - 用法：
+    ```dart
+    IntlUtil.formatDate(DateTime.now());
+    IntlUtil.formatCurrency(199.99);
+    IntlUtil.relativeTime(DateTime.now().subtract(Duration(minutes: 5))); // 5分钟前
+    ```
+
   - 封装入口：`GoRouterConfig.instance.initialize()`
   - 常量：`GoRouterRoutes` 提供路径/名称常量
   - 守卫：`GoRouterGuards.*`
