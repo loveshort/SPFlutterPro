@@ -1,3 +1,11 @@
+/*
+ * @Author: mingci gu271901088@gmail.com
+ * @Date: 2025-10-30 16:53:24
+ * @LastEditors: mingci gu271901088@gmail.com
+ * @LastEditTime: 2025-10-30 16:55:32
+ * @FilePath: /SPFlutterPro/lib/common/local_storage.dart
+ * @Description: 本地存储工具类
+ */
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
