@@ -1,0 +1,45 @@
+default_platform(:android)
+
+platform :android do
+  desc "Assemble Debug APK and upload to Pgyer"
+  lane :debug_pgyer do
+    gradle(task: "assemble", build_type: "Debug")
+
+    apk_path = Actions.lane_context[SharedValues::GRADLE_ALL_APK_OUTPUT_PATHS]&.last
+    unless apk_path && File.exist?(apk_path)
+      UI.user_error!("APK not found. Ensure assembleDebug succeeded.")
+    end
+
+    UI.message("Uploading to Pgyer: #{apk_path}")
+    sh <<~BASH
+      curl -f -X POST https://www.pgyer.com/apiv2/app/upload \
+        -F _api_key="$PGYER_API_KEY" \
+        -F file=@"#{apk_path}" \
+        -F buildInstallType="2" \
+        -F buildPassword="$PGYER_INSTALL_PASSWORD" \
+        -F buildUpdateDescription="$PGYER_CHANGELOG"
+    BASH
+  end
+
+  desc "Assemble Release APK and upload to Pgyer"
+  lane :release_pgyer do
+    gradle(task: "assemble", build_type: "Release")
+
+    apk_path = Actions.lane_context[SharedValues::GRADLE_ALL_APK_OUTPUT_PATHS]&.last
+    unless apk_path && File.exist?(apk_path)
+      UI.user_error!("APK not found. Ensure assembleRelease succeeded.")
+    end
+
+    UI.message("Uploading to Pgyer: #{apk_path}")
+    sh <<~BASH
+      curl -f -X POST https://www.pgyer.com/apiv2/app/upload \
+        -F _api_key="$PGYER_API_KEY" \
+        -F file=@"#{apk_path}" \
+        -F buildInstallType="2" \
+        -F buildPassword="$PGYER_INSTALL_PASSWORD" \
+        -F buildUpdateDescription="$PGYER_CHANGELOG"
+    BASH
+  end
+end
+
+

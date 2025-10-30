@@ -1,0 +1,8 @@
+app_identifier("com.example.spflutterpro") # TODO: 替换为实际Bundle ID
+apple_id("your_apple_id@example.com")     # 可选：如果使用 match 或其他登录
+
+# 可选: team 信息
+# itc_team_id("XXXXXXXXXX")
+# team_id("XXXXXXXXXX")
+
+

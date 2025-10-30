@@ -1,0 +1,64 @@
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    # Ensure CocoaPods installed
+    cocoapods
+  end
+
+  desc "Build Development ipa and upload to Pgyer"
+  lane :dev do
+    build_ios_app(
+      scheme: "Runner",
+      workspace: "Runner.xcworkspace",
+      configuration: "Debug",
+      export_method: "development",
+      output_directory: "build/ios/ipa",
+      output_name: "Runner-Dev.ipa"
+    )
+
+    ipa_path = File.expand_path("build/ios/ipa/Runner-Dev.ipa")
+    unless File.exist?(ipa_path)
+      UI.user_error!("ipa not found at #{ipa_path}")
+    end
+
+    UI.message("Uploading to Pgyer: #{ipa_path}")
+    sh <<~BASH
+      curl -f -X POST https://www.pgyer.com/apiv2/app/upload \
+        -F _api_key="$PGYER_API_KEY" \
+        -F file=@"#{ipa_path}" \
+        -F buildInstallType="2" \
+        -F buildPassword="$PGYER_INSTALL_PASSWORD" \
+        -F buildUpdateDescription="$PGYER_CHANGELOG"
+    BASH
+  end
+
+  desc "Build Release ipa (AdHoc) and upload to Pgyer"
+  lane :release_pgyer do
+    build_ios_app(
+      scheme: "Runner",
+      workspace: "Runner.xcworkspace",
+      configuration: "Release",
+      export_method: "ad-hoc",
+      output_directory: "build/ios/ipa",
+      output_name: "Runner-Release.ipa"
+    )
+
+    ipa_path = File.expand_path("build/ios/ipa/Runner-Release.ipa")
+    unless File.exist?(ipa_path)
+      UI.user_error!("ipa not found at #{ipa_path}")
+    end
+
+    UI.message("Uploading to Pgyer: #{ipa_path}")
+    sh <<~BASH
+      curl -f -X POST https://www.pgyer.com/apiv2/app/upload \
+        -F _api_key="$PGYER_API_KEY" \
+        -F file=@"#{ipa_path}" \
+        -F buildInstallType="2" \
+        -F buildPassword="$PGYER_INSTALL_PASSWORD" \
+        -F buildUpdateDescription="$PGYER_CHANGELOG"
+    BASH
+  end
+end
+
+

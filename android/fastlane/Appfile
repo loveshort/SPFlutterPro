@@ -1,0 +1,5 @@
+# Android Fastlane Appfile (占位，可留空)
+json_key_file("") # 如果你使用 Google Play API 可在此配置，与蒲公英无关
+package_name("com.example.spflutterpro") # TODO: 替换为实际包名
+
+
