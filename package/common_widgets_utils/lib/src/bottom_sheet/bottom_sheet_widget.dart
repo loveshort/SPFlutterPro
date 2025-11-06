@@ -155,7 +155,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget>
         return Container(
           height: screenHeight,
           width: screenWidth,
-          color: Colors.black.withOpacity(0.5 * _animation.value),
+          color: Colors.black.withValues(alpha: 0.5 * _animation.value),
           child: Stack(
             children: [
               // 背景点击区域
@@ -186,7 +186,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget>
                       boxShadow: widget.config.showShadow
                           ? [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
+                                color: Colors.black.withValues(alpha: 0.1),
                                 blurRadius: 10,
                                 offset: const Offset(0, -2),
                               ),
@@ -347,7 +347,7 @@ class BottomSheetUtils {
                   : null,
               onTap: () => Navigator.of(context).pop(index),
             );
-          }).toList(),
+          }),
         ],
       ),
     );

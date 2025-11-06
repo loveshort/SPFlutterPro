@@ -66,8 +66,5 @@ class CustomTabController extends ChangeNotifier {
   /// 是否是最后一个Tab
   bool get isLast => _currentIndex == length - 1;
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
+
 }

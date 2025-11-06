@@ -3,7 +3,7 @@ import 'font_weight_manager.dart';
 
 /// 字体粗细管理器使用示例
 class FontWeightExample extends StatelessWidget {
-  const FontWeightExample({Key? key}) : super(key: key);
+  const FontWeightExample({super.key});
 
   @override
   Widget build(BuildContext context) {

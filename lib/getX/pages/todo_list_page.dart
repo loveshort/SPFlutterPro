@@ -215,7 +215,7 @@ class TodoListPage extends StatelessWidget {
             Chip(
               label: const Text('清除所有'),
               onDeleted: controller.clearFilters,
-              backgroundColor: ColorManager.error.withOpacity(0.1),
+              backgroundColor: ColorManager.error.withValues(alpha: 0.1),
               deleteIcon:
                   Icon(Icons.clear_all, size: 18, color: ColorManager.error),
             ),
@@ -294,7 +294,7 @@ class TodoListPage extends StatelessWidget {
                             style: const TextStyle(fontSize: 12),
                           ),
                           backgroundColor:
-                              ColorManager.primary.withOpacity(0.1),
+                              ColorManager.primary.withValues(alpha: 0.1),
                           labelStyle: TextStyle(color: ColorManager.primary),
                         ),
                       ],
@@ -344,19 +344,19 @@ class TodoListPage extends StatelessWidget {
 
     switch (priority) {
       case Priority.urgent:
-        backgroundColor = ColorManager.error.withOpacity(0.1);
+        backgroundColor = ColorManager.error.withValues(alpha: 0.1);
         textColor = ColorManager.error;
         break;
       case Priority.high:
-        backgroundColor = Colors.orange.withOpacity(0.1);
+        backgroundColor = Colors.orange.withValues(alpha: 0.1);
         textColor = Colors.orange;
         break;
       case Priority.medium:
-        backgroundColor = Colors.blue.withOpacity(0.1);
+        backgroundColor = Colors.blue.withValues(alpha: 0.1);
         textColor = Colors.blue;
         break;
       case Priority.low:
-        backgroundColor = Colors.green.withOpacity(0.1);
+        backgroundColor = Colors.green.withValues(alpha: 0.1);
         textColor = Colors.green;
         break;
     }
@@ -577,7 +577,7 @@ class TodoListPage extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(

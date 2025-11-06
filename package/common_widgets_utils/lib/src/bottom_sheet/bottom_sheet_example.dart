@@ -190,7 +190,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
       options: options,
       selectedIndex: 1, // 默认选中第二个选项
     ).then((selectedIndex) {
-      if (selectedIndex != null) {
+      if (mounted && selectedIndex != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('你选择了: ${options[selectedIndex]}')),
         );

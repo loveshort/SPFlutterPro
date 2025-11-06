@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:common_flutter_network/common_flutter_network.dart';
 import 'package:common_widgets_utils/common_widgets_utils.dart';
-import 'package:common_widgets_utils/src/bottom_sheet/bottom_sheet_example.dart';
-import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dart';
 import 'package:sp_flutter_shopping/module/tabbar/bottom_tab_example.dart';
 import 'package:sp_flutter_shopping/tab/tab_example.dart';
 import 'router/go_router/go_router.dart';

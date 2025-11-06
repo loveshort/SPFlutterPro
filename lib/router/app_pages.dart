@@ -10,8 +10,7 @@
 import 'package:common_flutter_network/common_flutter_network.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:common_widgets_utils/src/bottom_sheet/bottom_sheet_example.dart';
-import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dart';
+import 'package:common_widgets_utils/common_widgets_utils.dart';
 
 // 导入页面
 import '../module/home/home_page.dart';
@@ -252,7 +251,7 @@ class AppPages {
           ),
           const Spacer(),
           Text(
-            '#${color.value.toRadixString(16).substring(2).toUpperCase()}',
+            '#${color.toARGB32().toRadixString(16).substring(2).toUpperCase()}',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey.shade600,
@@ -295,7 +294,7 @@ class AppPages {
           ),
           const Spacer(),
           Text(
-            '#${color.value.toRadixString(16).substring(2).toUpperCase()}',
+            '#${color.toARGB32().toRadixString(16).substring(2).toUpperCase()}',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey.shade600,

@@ -9,6 +9,8 @@
 export 'src/dashed_line/dashed_line.dart';
 export 'src/font_size_weight/font_weight_manager.dart';
 export 'src/bottom_sheet/bottom_sheet_widget.dart';
+export 'src/bottom_sheet/bottom_sheet_example.dart';
 export 'src/center_dialog/center_dialog_widget.dart';
+export 'src/center_dialog/center_dialog_example.dart';
 export 'src/custom_bottom_navigation_bar/custom_bottom_navigation_bar.dart';
 export 'src/custom_bottom_navigation_bar/tab_item.dart';

@@ -258,13 +258,13 @@ class _TodoFormPageState extends State<TodoFormPage> {
                         horizontal: 16, vertical: 12),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? _getPriorityColor(priority).withOpacity(0.1)
-                          : Colors.grey.withOpacity(0.1),
+                          ? _getPriorityColor(priority).withValues(alpha: 0.1)
+                          : Colors.grey.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: isSelected
                             ? _getPriorityColor(priority)
-                            : Colors.grey.withOpacity(0.3),
+                            : Colors.grey.withValues(alpha: 0.3),
                         width: isSelected ? 2 : 1,
                       ),
                     ),
@@ -347,13 +347,13 @@ class _TodoFormPageState extends State<TodoFormPage> {
                         horizontal: 16, vertical: 12),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? ColorManager.primary.withOpacity(0.1)
-                          : Colors.grey.withOpacity(0.1),
+                          ? ColorManager.primary.withValues(alpha: 0.1)
+                          : Colors.grey.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: isSelected
                             ? ColorManager.primary
-                            : Colors.grey.withOpacity(0.3),
+                            : Colors.grey.withValues(alpha: 0.3),
                         width: isSelected ? 2 : 1,
                       ),
                     ),
@@ -427,9 +427,9 @@ class _TodoFormPageState extends State<TodoFormPage> {
               width: double.infinity,
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.05),
+                color: Colors.grey.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -475,7 +475,7 @@ class _TodoFormPageState extends State<TodoFormPage> {
                           _selectedCategory,
                           style: const TextStyle(fontSize: 12),
                         ),
-                        backgroundColor: ColorManager.primary.withOpacity(0.1),
+                        backgroundColor: ColorManager.primary.withValues(alpha: 0.1),
                         labelStyle: TextStyle(color: ColorManager.primary),
                       ),
                     ],
@@ -530,7 +530,7 @@ class _TodoFormPageState extends State<TodoFormPage> {
           color: _getPriorityColor(priority),
         ),
       ),
-      backgroundColor: _getPriorityColor(priority).withOpacity(0.1),
+      backgroundColor: _getPriorityColor(priority).withValues(alpha: 0.1),
     );
   }
 

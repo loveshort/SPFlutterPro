@@ -72,8 +72,8 @@ class GetXExamplePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           gradient: LinearGradient(
             colors: [
-              ColorManager.primary.withOpacity(0.1),
-              ColorManager.primary.withOpacity(0.05),
+              ColorManager.primary.withValues(alpha: 0.1),
+              ColorManager.primary.withValues(alpha: 0.05),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -424,7 +424,7 @@ class GetXExamplePage extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: ColorManager.primary.withOpacity(0.1),
+              color: ColorManager.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(

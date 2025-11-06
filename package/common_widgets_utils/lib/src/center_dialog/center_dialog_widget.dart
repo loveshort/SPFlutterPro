@@ -116,7 +116,7 @@ class CenterDialogWidget extends StatefulWidget {
     return showDialog<T>(
       context: context,
       barrierDismissible: config.isDismissible,
-      barrierColor: config.barrierColor?.withOpacity(config.barrierOpacity),
+      barrierColor: config.barrierColor?.withValues(alpha: config.barrierOpacity),
       builder: (context) => CenterDialogWidget(
         config: config,
         onClose: onClose,
@@ -193,7 +193,7 @@ class _CenterDialogWidgetState extends State<CenterDialogWidget>
                   padding: widget.config.padding,
                   decoration: BoxDecoration(
                     color: widget.config.backgroundColor ??
-                        Theme.of(context).dialogBackgroundColor,
+                        Theme.of(context).dialogTheme.backgroundColor ?? Theme.of(context).colorScheme.surface,
                     borderRadius:
                         BorderRadius.circular(widget.config.borderRadius),
                     border: widget.config.showBorder
@@ -207,7 +207,7 @@ class _CenterDialogWidgetState extends State<CenterDialogWidget>
                         ? [
                             BoxShadow(
                               color: widget.config.shadowColor ??
-                                  Colors.black.withOpacity(0.1),
+                                  Colors.black.withValues(alpha: 0.1),
                               blurRadius: widget.config.shadowBlurRadius,
                               offset: widget.config.shadowOffset,
                             ),

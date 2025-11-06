@@ -10,8 +10,7 @@
 import 'package:flutter/material.dart';
 import 'package:common_flutter_network/common_flutter_network.dart';
 import 'package:common_widgets_utils/common_widgets_utils.dart';
-import 'package:common_widgets_utils/src/bottom_sheet/bottom_sheet_example.dart';
-import 'package:common_widgets_utils/src/center_dialog/center_dialog_example.dart';
+
 import 'go_router_utils.dart';
 import '../../module/tabbar/bottom_tab_example.dart';
 import '../../tab/tab_example.dart';
@@ -121,14 +120,15 @@ class _HomePageState extends State<HomePage> {
             icon: Icons.devices_other,
             onTap: () async {
               final data = await DeviceInfoService.getDeviceData();
-              if (!mounted) return;
-              showDialog(
-                context: context,
-                builder: (_) => AlertDialog(
-                  title: const Text('设备信息'),
-                  content: SingleChildScrollView(child: Text(data.toString())),
-                ),
-              );
+              if (mounted) {
+                showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                    title: const Text('设备信息'),
+                    content: SingleChildScrollView(child: Text(data.toString())),
+                  ),
+                );
+              }
             },
           ),
           _buildExampleCard(
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icons.open_in_browser,
             onTap: () async {
               final ok = await LauncherUtil.openUrl('https://flutter.dev');
-              if (!ok && mounted) {
+              if (mounted && !ok) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('无法打开链接')),
                 );

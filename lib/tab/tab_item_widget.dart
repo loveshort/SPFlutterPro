@@ -85,7 +85,7 @@ class TabItemWidget extends StatelessWidget {
         child: InkWell(
           onTap: config.enabled ? (onTap ?? config.onTap) : null,
           splashColor: style.enableRipple
-              ? (style.rippleColor ?? iconColor.withOpacity(0.2))
+              ? (style.rippleColor ?? iconColor.withValues(alpha: 0.2))
               : Colors.transparent,
           highlightColor: Colors.transparent,
           child: Container(

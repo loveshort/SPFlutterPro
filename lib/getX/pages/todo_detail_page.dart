@@ -149,12 +149,12 @@ class TodoDetailPage extends StatelessWidget {
           gradient: LinearGradient(
             colors: todo.isCompleted
                 ? [
-                    ColorManager.success.withOpacity(0.1),
-                    ColorManager.success.withOpacity(0.05)
+                    ColorManager.success.withValues(alpha: 0.1),
+                    ColorManager.success.withValues(alpha: 0.05)
                   ]
                 : [
-                    ColorManager.primary.withOpacity(0.1),
-                    ColorManager.primary.withOpacity(0.05)
+                    ColorManager.primary.withValues(alpha: 0.1),
+                    ColorManager.primary.withValues(alpha: 0.05)
                   ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -510,19 +510,19 @@ class TodoDetailPage extends StatelessWidget {
 
     switch (priority) {
       case Priority.urgent:
-        backgroundColor = ColorManager.error.withOpacity(0.1);
+        backgroundColor = ColorManager.error.withValues(alpha: 0.1);
         textColor = ColorManager.error;
         break;
       case Priority.high:
-        backgroundColor = Colors.orange.withOpacity(0.1);
+        backgroundColor = Colors.orange.withValues(alpha: 0.1);
         textColor = Colors.orange;
         break;
       case Priority.medium:
-        backgroundColor = Colors.blue.withOpacity(0.1);
+        backgroundColor = Colors.blue.withValues(alpha: 0.1);
         textColor = Colors.blue;
         break;
       case Priority.low:
-        backgroundColor = Colors.green.withOpacity(0.1);
+        backgroundColor = Colors.green.withValues(alpha: 0.1);
         textColor = Colors.green;
         break;
     }
@@ -560,7 +560,7 @@ class TodoDetailPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: ColorManager.primary.withOpacity(0.1),
+        color: ColorManager.primary.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
