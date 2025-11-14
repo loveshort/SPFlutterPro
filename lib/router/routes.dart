@@ -37,6 +37,7 @@ class Routes {
   // 示例页面路由
   static const String bottomTabExample = '/bottomTabExample';
   static const String advancedBottomTabExample = '/advancedBottomTabExample';
+  static const String dogAppTabExample = '/dogAppTabExample';
   static const String colorExample = '/colorExample';
   static const String bottomSheetExample = '/bottomSheetExample';
   static const String centerDialogExample = '/centerDialogExample';
@@ -73,6 +74,7 @@ class Routes {
         about,
         bottomTabExample,
         advancedBottomTabExample,
+        dogAppTabExample,
         colorExample,
         bottomSheetExample,
         centerDialogExample,

@@ -2,7 +2,7 @@
  * @Author: mingci gu271901088@gmail.com
  * @Date: 2025-01-27
  * @LastEditors: mingci gu271901088@gmail.com
- * @LastEditTime: 2025-09-24 10:29:09
+ * @LastEditTime: 2025-11-14 10:18:13
  * @FilePath: /SPFlutterPro/lib/router/app_pages.dart
  * @Description: 页面路由配置
  */
@@ -19,6 +19,7 @@ import '../module/cart/cart_page.dart';
 import '../module/message/message_page.dart';
 import '../module/my/profile_page.dart';
 import '../module/tabbar/bottom_tab_example.dart';
+import '../tab/dog_app_tab_example.dart';
 
 // 导入GetX示例页面
 import '../getX/pages/getx_example_page.dart';
@@ -91,6 +92,12 @@ class AppPages {
           name: Routes.advancedBottomTabExample,
           page: () => const AdvancedBottomTabExample(),
           transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+        GetPage(
+          name: Routes.dogAppTabExample,
+          page: () => const DogAppTabExample(),
+          transition: Transition.fadeIn,
           transitionDuration: const Duration(milliseconds: 300),
         ),
         GetPage(
@@ -251,7 +258,7 @@ class AppPages {
           ),
           const Spacer(),
           Text(
-            '#${color.toARGB32().toRadixString(16).substring(2).toUpperCase()}',
+            '#{123123213}',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey.shade600,
@@ -294,7 +301,7 @@ class AppPages {
           ),
           const Spacer(),
           Text(
-            '#${color.toARGB32().toRadixString(16).substring(2).toUpperCase()}',
+            '#{123123213}',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey.shade600,

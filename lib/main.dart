@@ -241,6 +241,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const AdvancedBottomTabExample()),
             ),
           ),
+          _buildExampleCard(
+            context,
+            title: 'Dog APP 底部导航',
+            description: '根据 Figma 设计的底部导航栏',
+            color: Colors.orange,
+            icon: Icons.pets,
+            onTap: () => Navigator.pushNamed(context, '/dogAppTabExample'),
+          ),
           const SizedBox(height: 16),
 
           // 状态管理示例
