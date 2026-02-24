@@ -9,8 +9,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'go_router_routes.dart';
+
 import 'go_router_config.dart';
+import 'go_router_routes.dart';
 
 /// GoRouter 工具类
 /// 提供便捷的路由操作方法
@@ -142,6 +143,11 @@ class GoRouterUtils {
   /// 导航到关于页
   static void goAbout() {
     go(GoRouterRoutes.about);
+  }
+
+  /// 导航到内购示例页
+  static void goInAppPurchase() {
+    go(GoRouterRoutes.inAppPurchase);
   }
 
   // ==================== 查询参数方法 ====================
@@ -407,6 +413,11 @@ extension GoRouterContextExtension on BuildContext {
   /// 导航到关于页
   void goAbout() {
     GoRouterUtils.goAbout();
+  }
+
+  /// 导航到内购示例页
+  void goInAppPurchase() {
+    GoRouterUtils.goInAppPurchase();
   }
 
   // ==================== 路由状态扩展 ====================

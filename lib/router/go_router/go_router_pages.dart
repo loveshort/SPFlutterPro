@@ -7,22 +7,22 @@
  * @Description: GoRouter 页面组件 - 基础页面组件
  */
 
-import 'package:flutter/material.dart';
 import 'package:common_flutter_network/common_flutter_network.dart';
 import 'package:common_widgets_utils/common_widgets_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-import 'go_router_utils.dart';
-import '../../module/tabbar/bottom_tab_example.dart';
-import '../../tab/tab_example.dart';
+import '../../common/decimal_util.dart';
 import '../../common/device_info_service.dart';
+import '../../common/image_cache_util.dart';
+import '../../common/intl_util.dart';
 import '../../common/launcher_util.dart';
 import '../../common/permission_service.dart';
-import '../../common/intl_util.dart';
-import '../../common/image_cache_util.dart';
-import 'package:permission_handler/permission_handler.dart';
 import '../../common/svg_util.dart';
 import '../../common/toast_util.dart';
-import '../../common/decimal_util.dart';
+import '../../module/tabbar/bottom_tab_example.dart';
+import '../../tab/tab_example.dart';
+import 'go_router_utils.dart';
 
 /// 首页组件
 class HomePage extends StatefulWidget {
@@ -125,7 +125,8 @@ class _HomePageState extends State<HomePage> {
                   context: context,
                   builder: (_) => AlertDialog(
                     title: const Text('设备信息'),
-                    content: SingleChildScrollView(child: Text(data.toString())),
+                    content:
+                        SingleChildScrollView(child: Text(data.toString())),
                   ),
                 );
               }
@@ -223,7 +224,8 @@ class _HomePageState extends State<HomePage> {
                     height: 160,
                     child: SvgUtil.network(
                       'https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/android.svg',
-                      placeholder: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+                      placeholder: const Center(
+                          child: CircularProgressIndicator(strokeWidth: 2)),
                     ),
                   ),
                 ),
@@ -344,6 +346,18 @@ class _HomePageState extends State<HomePage> {
             color: Colors.teal,
             icon: Icons.anchor,
             onTap: () => context.goRiverpodExample(),
+          ),
+          const SizedBox(height: 16),
+
+          // 应用内购买
+          _buildSectionTitle('🛒 应用内购买'),
+          _buildExampleCard(
+            context,
+            title: '内购示例',
+            description: '演示内购功能',
+            color: Colors.blue,
+            icon: Icons.shopping_cart,
+            onTap: () => context.goInAppPurchase(),
           ),
           const SizedBox(height: 24),
         ],

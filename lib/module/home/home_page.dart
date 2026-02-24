@@ -7,10 +7,11 @@
  * @Description: 首页
  */
 import 'package:common_flutter_network/common_flutter_network.dart';
-import 'package:flutter/material.dart';
 import 'package:common_widgets_utils/common_widgets_utils.dart';
-import '../../router/simple_router.dart';
+import 'package:flutter/material.dart';
+
 import '../../router/routes.dart';
+import '../../router/simple_router.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -141,6 +142,17 @@ class _HomePageState extends State<HomePage> {
                 foregroundColor: Colors.white,
               ),
               child: const Text('显示错误提示'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                SimpleRouter.toNamed(Routes.inAppPurchase);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text('内购示例'),
             ),
           ],
         ),

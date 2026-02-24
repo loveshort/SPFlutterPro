@@ -4,17 +4,18 @@
  * @Email: gu271901088@gmail.com
  * @描述: 
  */
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:common_flutter_network/common_flutter_network.dart';
 import 'package:common_widgets_utils/common_widgets_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:sp_flutter_shopping/module/tabbar/bottom_tab_example.dart';
 import 'package:sp_flutter_shopping/tab/tab_example.dart';
-import 'router/go_router/go_router.dart';
+
 import 'common/app_info_service.dart';
 import 'common/connectivity_service.dart';
 import 'common/screen_util.dart';
-import 'package:oktoast/oktoast.dart';
+import 'router/go_router/go_router.dart';
 
 void main() async {
   // 确保 Flutter 绑定已初始化
@@ -269,13 +270,8 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icons.anchor,
             onTap: () => Navigator.pushNamed(context, '/riverpodExample'),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: '增加计数',
-        child: const Icon(Icons.add),
       ),
     );
   }

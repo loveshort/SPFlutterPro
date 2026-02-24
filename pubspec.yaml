@@ -57,6 +57,7 @@ dependencies:
   flutter_svg: ^2.1.0 # SVG图片
   oktoast: ^3.3.0 # 提示框
   decimal: ^3.2.4 # 小数计算
+  in_app_purchase: ^3.2.3 # 内购
  
 
 

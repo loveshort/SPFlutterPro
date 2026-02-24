@@ -23,6 +23,7 @@ import '../../Riverpod/pages/product_list_page.dart';
 import '../../Riverpod/pages/product_detail_page.dart';
 import '../../Riverpod/pages/river_pod_cart_page.dart';
 import '../../module/tabbar/bottom_tab_example.dart';
+import '../../in_app_purchase/in_app_purchase.dart';
 
 /// GoRouter 配置类
 /// 提供类型安全的路由管理
@@ -259,6 +260,13 @@ class GoRouterConfig {
         path: GoRouterRoutes.centerDialogExample,
         name: GoRouterRoutes.centerDialogExampleName,
         builder: (context, state) => const CenterDialogExamplePage(),
+      ),
+
+      // 内购示例路由
+      GoRoute(
+        path: GoRouterRoutes.inAppPurchase,
+        name: GoRouterRoutes.inAppPurchaseName,
+        builder: (context, state) => const InAppPurchasePage(),
       ),
     ];
   }

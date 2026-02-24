@@ -138,6 +138,12 @@ class GoRouterRoutes {
   static const String advancedBottomTabExampleName =
       'advanced-bottom-tab-example';
 
+  /// 内购示例页路径
+  static const String inAppPurchase = '/in-app-purchase';
+
+  /// 内购示例页名称
+  static const String inAppPurchaseName = 'in-app-purchase';
+
   /// 颜色示例页路径
   static const String colorExample = '/examples/color';
 

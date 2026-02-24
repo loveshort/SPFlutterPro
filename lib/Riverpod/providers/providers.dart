@@ -7,8 +7,10 @@
  * @Description: Riverpod提供者 - 状态管理
  */
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:common_flutter_network/common_flutter_network.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
+
 import '../models/product_model.dart';
 import '../services/product_service.dart';
 

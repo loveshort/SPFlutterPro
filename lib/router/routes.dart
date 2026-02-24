@@ -33,7 +33,7 @@ class Routes {
   static const String addressEdit = '/addressEdit';
   static const String settings = '/settings';
   static const String about = '/about';
-
+  static const String inAppPurchase = '/inAppPurchase';
   // 示例页面路由
   static const String bottomTabExample = '/bottomTabExample';
   static const String advancedBottomTabExample = '/advancedBottomTabExample';
@@ -86,5 +86,6 @@ class Routes {
         riverpodProductList,
         riverpodProductDetail,
         riverpodCart,
+        inAppPurchase,
       ];
 }

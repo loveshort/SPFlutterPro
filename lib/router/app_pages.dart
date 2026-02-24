@@ -8,32 +8,29 @@
  */
 
 import 'package:common_flutter_network/common_flutter_network.dart';
-import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import 'package:common_widgets_utils/common_widgets_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../Riverpod/pages/product_detail_page.dart';
+import '../Riverpod/pages/product_list_page.dart';
+import '../Riverpod/pages/river_pod_cart_page.dart';
+// 导入Riverpod示例页面
+import '../Riverpod/pages/riverpod_example_page.dart';
+import '../getX/models/todo_model.dart';
+// 导入GetX示例页面
+import '../getX/pages/getx_example_page.dart';
+import '../getX/pages/todo_detail_page.dart';
+import '../getX/pages/todo_form_page.dart';
+import '../getX/pages/todo_list_page.dart';
+import '../module/cart/cart_page.dart';
+import '../module/category/category_page.dart';
 // 导入页面
 import '../module/home/home_page.dart';
-import '../module/category/category_page.dart';
-import '../module/cart/cart_page.dart';
 import '../module/message/message_page.dart';
 import '../module/my/profile_page.dart';
 import '../module/tabbar/bottom_tab_example.dart';
 import '../tab/dog_app_tab_example.dart';
-
-// 导入GetX示例页面
-import '../getX/pages/getx_example_page.dart';
-import '../getX/pages/todo_list_page.dart';
-import '../getX/pages/todo_detail_page.dart';
-import '../getX/pages/todo_form_page.dart';
-import '../getX/models/todo_model.dart';
-
-// 导入Riverpod示例页面
-import '../Riverpod/pages/riverpod_example_page.dart';
-import '../Riverpod/pages/product_list_page.dart';
-import '../Riverpod/pages/product_detail_page.dart';
-import '../Riverpod/pages/river_pod_cart_page.dart';
-
 // 导入路由常量
 import 'routes.dart';
 
