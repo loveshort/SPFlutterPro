@@ -58,6 +58,7 @@ dependencies:
   oktoast: ^3.3.0 # 提示框
   decimal: ^3.2.4 # 小数计算
   in_app_purchase: ^3.2.3 # 内购
+  flutter_monitor_sdk: ^1.0.1
  
 
 

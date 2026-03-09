@@ -270,6 +270,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "5.0.0"
+  flutter_monitor_sdk:
+    dependency: "direct main"
+    description:
+      name: flutter_monitor_sdk
+      sha256: "3b296fc6b1b5f69e195fd5adb7c3d51b0a4530c71c7e371072c7c47aeb0a0d2f"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.1"
   flutter_riverpod:
     dependency: "direct main"
     description:

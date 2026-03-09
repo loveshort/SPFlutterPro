@@ -27,7 +27,7 @@ class _InAppPurchasePageState extends ConsumerState<InAppPurchasePage> {
     'ios_premium_monthly',
     'ios_premium_yearly',
     'ios_coin_100',
-    'year_vip_one',
+   
   ];
 
   final AppPurchaseManager _manager = AppPurchaseManager.instance;
@@ -39,6 +39,7 @@ class _InAppPurchasePageState extends ConsumerState<InAppPurchasePage> {
   String? _statusText;
 
   @override
+
   void initState() {
     super.initState();
     _initPurchase();
