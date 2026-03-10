@@ -24,6 +24,7 @@ import '../../Riverpod/pages/product_detail_page.dart';
 import '../../Riverpod/pages/river_pod_cart_page.dart';
 import '../../module/tabbar/bottom_tab_example.dart';
 import '../../in_app_purchase/in_app_purchase.dart';
+import '../../ios26widget/ios_tab_example.dart';
 
 /// GoRouter 配置类
 /// 提供类型安全的路由管理
@@ -267,6 +268,13 @@ class GoRouterConfig {
         path: GoRouterRoutes.inAppPurchase,
         name: GoRouterRoutes.inAppPurchaseName,
         builder: (context, state) => const InAppPurchasePage(),
+      ),
+
+      // iOS 26 原生 Tab 示例
+      GoRoute(
+        path: GoRouterRoutes.iosTabExample,
+        name: GoRouterRoutes.iosTabExampleName,
+        builder: (context, state) => const IOSTabExample(),
       ),
     ];
   }

@@ -22,6 +22,7 @@ import '../../common/svg_util.dart';
 import '../../common/toast_util.dart';
 import '../../module/tabbar/bottom_tab_example.dart';
 import '../../tab/tab_example.dart';
+import '../../ios26widget/ios_tab_example.dart';
 import 'go_router_utils.dart';
 
 /// 首页组件
@@ -298,6 +299,17 @@ class _HomePageState extends State<HomePage> {
               context,
               MaterialPageRoute(
                   builder: (context) => const CustomControllerTabExample()),
+            ),
+          ),
+          _buildExampleCard(
+            context,
+            title: 'iOS 26 原生 Tab 示例',
+            description: 'iOS 26+ 调用原生；以下沿用 Flutter',
+            color: Colors.black,
+            icon: Icons.phone_iphone,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const IOSTabExample()),
             ),
           ),
           const SizedBox(height: 16),

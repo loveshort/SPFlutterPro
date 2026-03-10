@@ -162,6 +162,12 @@ class GoRouterRoutes {
   /// 居中对话框示例页名称
   static const String centerDialogExampleName = 'center-dialog-example';
 
+  /// iOS 26 原生 Tab 示例页路径
+  static const String iosTabExample = '/examples/ios26-tab';
+
+  /// iOS 26 原生 Tab 示例页名称
+  static const String iosTabExampleName = 'ios26-tab-example';
+
   // ==================== 路由工具方法 ====================
 
   /// 获取所有路由路径列表
@@ -190,6 +196,7 @@ class GoRouterRoutes {
         colorExample,
         bottomSheetExample,
         centerDialogExample,
+        iosTabExample,
       ];
 
   /// 获取所有路由名称列表
@@ -218,6 +225,7 @@ class GoRouterRoutes {
         colorExampleName,
         bottomSheetExampleName,
         centerDialogExampleName,
+        iosTabExampleName,
       ];
 
   // ==================== 路径构建方法 ====================
